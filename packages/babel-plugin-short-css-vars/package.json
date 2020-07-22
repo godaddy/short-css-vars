@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/godaddy/short-css-vars.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/godaddy/short-css-vars/packages/babel-plugin-short-css-vars#readme",
   "keywords": [
     "babel",

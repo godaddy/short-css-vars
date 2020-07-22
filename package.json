@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "description": "Optimize CSS variables names",
   "private": true,
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "test": "lerna run test --concurrency=1 --stream",
     "build": "lerna run build",
