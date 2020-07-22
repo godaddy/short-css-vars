@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-short-css-vars",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Optimization plugin to shorten the names of CSS variables",
   "license": "MIT",
   "author": "GoDaddy Operating Company, LLC",
@@ -34,7 +34,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "short-css-vars": "^0.0.0"
+    "short-css-vars": "^1.0.0"
   },
   "devDependencies": {
     "@babel/helper-plugin-test-runner": "^7.10.4",
