@@ -1,0 +1,45 @@
+{
+  "name": "short-css-vars-repo",
+  "version": "0.0.0",
+  "description": "Optimize CSS variables names",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "lerna run test --concurrency=1 --stream",
+    "build": "lerna run build",
+    "docs": "lerna run docs",
+    "bootstrap": "lerna bootstrap --hoist --nohoist=postcss && npm run build && npm run docs",
+    "clean": "lerna clean --yes && rimraf node_modules",
+    "postinstall": "npm run bootstrap"
+  },
+  "keywords": [
+    "postcss",
+    "postcss-plugin",
+    "babel",
+    "babel-plugin",
+    "css",
+    "variables",
+    "custom",
+    "properties",
+    "short",
+    "hash",
+    "name",
+    "shorten"
+  ],
+  "author": "GoDaddy Operating Company, LLC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/godaddy/short-css-vars.git"
+  },
+  "bugs": {
+    "url": "https://github.com/godaddy/short-css-vars/issues"
+  },
+  "homepage": "https://github.com/godaddy/short-css-vars#readme",
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "rimraf": "^3.0.2"
+  }
+}

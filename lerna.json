@@ -1,0 +1,18 @@
+{
+  "version": "0.0.0",
+  "packages": [
+    "packages/*"
+  ],
+  "ignoreChanges": [
+    "**/*.+(test|spec).js",
+    "**/CHANGELOG.md"
+  ],
+  "command": {
+    "publish": {
+      "npmClientArgs": [
+        "--access",
+        "public"
+      ]
+    }
+  }
+}

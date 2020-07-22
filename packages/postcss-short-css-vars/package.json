@@ -1,0 +1,49 @@
+{
+  "name": "postcss-short-css-vars",
+  "version": "0.0.0",
+  "description": "Optimization plugin to shorten the names of CSS variables",
+  "license": "MIT",
+  "author": "GoDaddy Operating Company, LLC",
+  "contributors": [
+    "Andrew Gerard <agerard@godaddy.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/godaddy/short-css-vars.git"
+  },
+  "homepage": "https://github.com/godaddy/short-css-vars/packages/postcss-short-css-vars#readme",
+  "keywords": [
+    "postcss",
+    "postcss-plugin",
+    "css",
+    "variables",
+    "custom",
+    "properties",
+    "short",
+    "hash",
+    "name",
+    "shorten"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "nyc --reporter=lcov mocha index.test.js",
+    "posttest": "npm run lint"
+  },
+  "dependencies": {
+    "postcss": "^7.0.32",
+    "short-css-vars": "^0.0.0"
+  },
+  "devDependencies": {
+    "assume": "^2.2.0",
+    "eslint": "^7.4.0",
+    "eslint-config-godaddy": "^4.0.0",
+    "eslint-plugin-json": "^2.1.1",
+    "eslint-plugin-mocha": "^7.0.1",
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0"
+  },
+  "eslintConfig": {
+    "extends": "godaddy"
+  }
+}

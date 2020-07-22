@@ -1,0 +1,52 @@
+{
+  "name": "short-css-vars",
+  "version": "0.0.0",
+  "description": "Optimization plugin to shorten the names of CSS variables",
+  "license": "MIT",
+  "author": "GoDaddy Operating Company, LLC",
+  "contributors": [
+    "Andrew Gerard <agerard@godaddy.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/godaddy/short-css-vars.git"
+  },
+  "homepage": "https://github.com/godaddy/short-css-vars/packages/short-css-vars#readme",
+  "keywords": [
+    "css",
+    "variables",
+    "custom",
+    "properties",
+    "short",
+    "hash",
+    "name",
+    "shorten"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "nyc --reporter=lcov mocha index.test.js",
+    "posttest": "npm run lint",
+    "docs": "jsdoc2md -t README.template.md --plugin @godaddy/dmd --files index.js > README.md"
+  },
+  "dependencies": {
+    "string-hash": "^1.1.3"
+  },
+  "devDependencies": {
+    "@godaddy/dmd": "^1.0.3",
+    "assume": "^2.2.0",
+    "eslint": "^7.4.0",
+    "eslint-config-godaddy": "^4.0.0",
+    "eslint-plugin-json": "^2.1.1",
+    "eslint-plugin-mocha": "^7.0.1",
+    "jsdoc-to-markdown": "^6.0.1",
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0"
+  },
+  "eslintConfig": {
+    "extends": "godaddy"
+  },
+  "eslintIgnore": [
+    "fixtures"
+  ]
+}
