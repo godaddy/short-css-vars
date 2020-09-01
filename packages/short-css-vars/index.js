@@ -22,20 +22,28 @@ const defaultFormatter = name => stringHash(name).toString(36);
  *
  * @param {object} [options] - Optional configurations
  * @param {function} [options.formatter] - Custom formatter
- * @param {RegExp|function} [options.ignore] - Rule to ignore certain variable names
+ * @param {RegExp|string|function} [options.ignore] - Rule to ignore certain variable names
  */
 function ShortCssVars(options = {}) {
   const formatter = options.formatter || defaultFormatter;
-  let ignore = options.ignore;
-  if (ignore instanceof RegExp) {
-    ignore = str => options.ignore.test(str);
+  let ignoreFn = options.ignore;
+
+  //  Normalize ignore string/regexp to a function
+  if (ignoreFn && !(ignoreFn instanceof Function)) {
+    let ignore = options.ignore;
+    if (typeof ignore === 'string') {
+      ignore = new RegExp(ignore);
+    }
+    if (ignore instanceof RegExp) {
+      ignoreFn = str => ignore.test(str);
+    }
   }
 
   const renameMap = {};
   const collisionMap = {};
 
   const shorten = name => {
-    if (ignore && ignore(name)) return name;
+    if (ignoreFn && ignoreFn(name)) return name;
 
     const shortName = formatter(name);
     renameMap[name] = shortName;
