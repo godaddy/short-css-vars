@@ -101,9 +101,9 @@ than `--my-custom-var`.
 #### ignore
 
 If you need to avoid hashing certain variable names, you can ignore them with
-this option by either RegExp or function. This can be useful if you are
-referencing CSS Variables in an app, yet you do not have control over some of
-the declarations.
+this option by either RegExp, function, or string (which will be turned into
+RegExp). This can be useful if you are referencing CSS Variables in an app,
+yet you do not have control over some of the declarations.
 
 ```js
 const postcss = require('postcss');
