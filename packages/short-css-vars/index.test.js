@@ -98,6 +98,15 @@ describe('ShortCssVars', () => {
         const result = run(input, { ignore: name => name.length <= 4 });
         assume(result).equals(expected);
       });
+
+      it('throws if invalid type', () => {
+        const input = ':root{--one: red; --custom-var-two: 1.2rem}' +
+          '.my-class{ color: var(--one, var(--custom-var-two))}';
+        assume(() => run(input, { ignore: true }))
+          .throws('\'ignore\' must be of type function, RegExp, or string. Received boolean');
+        assume(() => run(input, { ignore: {} }))
+          .throws('\'ignore\' must be of type function, RegExp, or string. Received object');
+      });
     });
 
     describe('formatter', () => {
