@@ -17,7 +17,7 @@ const defaultFormatter = name => stringHash(name).toString(36);
  * Normalize ignore string/regexp to a function
  *
  * @param {RegExp|string|function} ignore - Rule to ignore certain variable names
- * @returns {(function(*): boolean)} fn
+ * @returns {(function(string): boolean)} fn
  * @private
  */
 function normalizeIgnore(ignore) {
