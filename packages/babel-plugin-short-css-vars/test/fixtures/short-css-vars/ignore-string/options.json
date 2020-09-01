@@ -1,7 +1,7 @@
 {
   "plugins": [
     ["../../../../", {
-      "ignore": "two"
+      "ignore": "^.+-two"
     }]
   ]
 }

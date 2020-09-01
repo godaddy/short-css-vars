@@ -77,7 +77,7 @@ describe('ShortCssVars', () => {
           '.my-class{ color: var(--custom-var-one, var(--custom-var-two))}';
         const expected = ':root{--custom-var-one: red; --1tn4ykf: 1.2rem}' +
           '.my-class{ color: var(--custom-var-one, var(--1tn4ykf))}';
-        const result = run(input, { ignore: 'one$' });
+        const result = run(input, { ignore: '^.+-one' });
         assume(result).equals(expected);
       });
 
@@ -86,7 +86,7 @@ describe('ShortCssVars', () => {
           '.my-class{ color: var(--custom-var-one, var(--custom-var-two))}';
         const expected = ':root{--custom-var-one: red; --1tn4ykf: 1.2rem}' +
           '.my-class{ color: var(--custom-var-one, var(--1tn4ykf))}';
-        const result = run(input, { ignore: new RegExp('one$') });
+        const result = run(input, { ignore: /^.+-one/ });
         assume(result).equals(expected);
       });
 
