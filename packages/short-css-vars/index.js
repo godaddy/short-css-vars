@@ -14,6 +14,30 @@ const reRef = /(,?\s*var\(\s*--)([\w-]+)(,\s*var.+)?/g;
 const defaultFormatter = name => stringHash(name).toString(36);
 
 /**
+ * Normalize ignore string/regexp to a function
+ *
+ * @param {RegExp|string|function} ignore - Rule to ignore certain variable names
+ * @returns {(function(string): boolean)} fn
+ * @private
+ */
+function normalizeIgnore(ignore) {
+  if (ignore instanceof Function) return ignore;
+
+  if (ignore) {
+    if (typeof ignore === 'string') {
+      ignore = new RegExp(ignore);
+    }
+    if (ignore instanceof RegExp) {
+      return str => ignore.test(str);
+    }
+
+    throw new Error(`'ignore' must be of type function, RegExp, or string. Received ${typeof ignore}`);
+  }
+
+  return () => false;
+}
+
+/**
  * Each instance keeps track of renamed variables to check for collisions and
  * to provide a mapping of changed names.
  *
@@ -22,20 +46,17 @@ const defaultFormatter = name => stringHash(name).toString(36);
  *
  * @param {object} [options] - Optional configurations
  * @param {function} [options.formatter] - Custom formatter
- * @param {RegExp|function} [options.ignore] - Rule to ignore certain variable names
+ * @param {RegExp|string|function} [options.ignore] - Rule to ignore certain variable names
  */
 function ShortCssVars(options = {}) {
   const formatter = options.formatter || defaultFormatter;
-  let ignore = options.ignore;
-  if (ignore instanceof RegExp) {
-    ignore = str => options.ignore.test(str);
-  }
+  const ignore = normalizeIgnore(options.ignore);
 
   const renameMap = {};
   const collisionMap = {};
 
   const shorten = name => {
-    if (ignore && ignore(name)) return name;
+    if (ignore(name)) return name;
 
     const shortName = formatter(name);
     renameMap[name] = shortName;

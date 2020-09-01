@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     ['../../../../', {
-      ignore: /two/
+      ignore: name => name.includes('two')
     }]
   ]
 }

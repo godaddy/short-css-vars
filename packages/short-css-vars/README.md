@@ -54,7 +54,7 @@ to provide a mapping of changed names.
 | --- | --- | --- |
 | \[options\] | `object` | Optional configurations |
 | \[options.formatter\] | `function` | Custom formatter |
-| \[options.ignore\] | `RegExp` \| `function` | Rule to ignore certain variable names |
+| \[options.ignore\] | `RegExp` \| `string` \| `function` | Rule to ignore certain variable names |
 
 
 ### shortCssVars.replaceName(varName)

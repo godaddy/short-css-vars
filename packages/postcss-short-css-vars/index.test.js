@@ -68,12 +68,21 @@ describe('postcss-short-css-vars', () => {
   });
 
   describe('ignore', () => {
+    it('ignores variable names via string', () => {
+      const input = ':root{--custom-var-one: red; --custom-var-two: 1.2rem}' +
+        '.my-class{ color: var(--custom-var-one, var(--custom-var-two))}';
+      const expected = ':root{--custom-var-one: red; --1tn4ykf: 1.2rem}' +
+        '.my-class{ color: var(--custom-var-one, var(--1tn4ykf))}';
+      const result = run(input, { ignore: '^.+-one' });
+      assume(result.css).equals(expected);
+    });
+
     it('ignores variable names via RegExp', () => {
       const input = ':root{--custom-var-one: red; --custom-var-two: 1.2rem}' +
         '.my-class{ color: var(--custom-var-one, var(--custom-var-two))}';
       const expected = ':root{--custom-var-one: red; --1tn4ykf: 1.2rem}' +
         '.my-class{ color: var(--custom-var-one, var(--1tn4ykf))}';
-      const result = run(input, { ignore: /one/ });
+      const result = run(input, { ignore: /^.+-one/ });
       assume(result.css).equals(expected);
     });
 
