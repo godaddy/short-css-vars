@@ -34,7 +34,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "postcss": "^7.0.32",
+    "postcss": "^8.2.10",
     "short-css-vars": "^1.1.0"
   },
   "devDependencies": {
